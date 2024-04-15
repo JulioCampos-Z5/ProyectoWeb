@@ -1,6 +1,16 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #C0C9CD;
+    float: left;
+}
+
+main {
+    width: 1400px;
+    float: left;
+}
+
+.PR {
+    display: flex;
 }
 
 /* nav {} */
@@ -9,12 +19,10 @@ nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-
 }
 
 nav ul li {
     float: left;
-
 }
 
 nav ul li a {
@@ -23,7 +31,6 @@ nav ul li a {
     text-align: center;
     padding: 20px 70px;
     text-decoration: none;
-
 }
 
 nav ul li a:hover {
@@ -42,13 +49,26 @@ a {
 }
 
 .Venta {
+    margin: 5px;
     border-radius: 40px;
     background-color: #DADFE1;
-    width: 480px;
+    width: 414px;
     height: 480px;
 }
-.Venta h1{
+
+.Venta h1 {
+    padding: 13px 0px 0px 0px;
+    font-size: 28px;
     text-align: center;
+}
+
+iframe {
+    margin: 10px 0px 0px 6px;
+    background-color: #DADFE1;
+    border-radius: 50px;
+    height: 480px;
+    width: 1020px;
+
 }
 
 #Barra {
@@ -56,7 +76,7 @@ a {
     border-radius: 15px;
     font-size: 30px;
     height: 54px;
-    width: 94%;
+    width: 92%;
 }
 
 .Boton :hover {
@@ -66,8 +86,8 @@ a {
 .Boton {
     margin: 10px;
     background-color: #ffffff;
-    border-radius: 15px;
+    border-radius: 50px;
     font-size: 15px;
     height: 54px;
-    width: 215px;
+    width: 177px;
 }

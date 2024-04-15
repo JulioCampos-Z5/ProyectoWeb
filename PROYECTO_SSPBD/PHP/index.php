@@ -5,7 +5,7 @@ $contraseña = '5544'; // Cambiar según tu configuración
 $base_de_datos = 'tienda_de_ropa'; // Cambiar según tu configuración
 
 // Crear una conexión
-$conexion = new mysqli($host, $usuario, $contraseña,$base_de_datos);
+$conexion = new mysqli($host, $usuario, $contraseña, $base_de_datos);
 
 // Verificar la conexión
 if ($conexion->connect_error) {
@@ -16,3 +16,4 @@ echo "Conexión exitosa";
 
 // Cerrar la conexión
 $conexion->close();
+?>
