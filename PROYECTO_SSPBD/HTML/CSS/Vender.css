@@ -4,15 +4,6 @@ body {
     float: left;
 }
 
-main {
-    width: 1400px;
-    float: left;
-}
-
-.PR {
-    display: flex;
-}
-
 /* nav {} */
 
 nav ul {
@@ -48,6 +39,11 @@ a {
     border-radius: 50px;
 }
 
+main {
+    display: grid;
+    grid-template-columns: 427px 1px;
+}
+
 .Venta {
     margin: 5px;
     border-radius: 40px;
@@ -67,7 +63,7 @@ iframe {
     background-color: #DADFE1;
     border-radius: 50px;
     height: 480px;
-    width: 1020px;
+    width: 1000px;
 
 }
 
