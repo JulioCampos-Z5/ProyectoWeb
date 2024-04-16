@@ -8,10 +8,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>no entrar</title>
+    <style>
+        body {
+            margin: 0;
+            border: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            height: 100px;
+            background-color: black;
+        }
+
+        tr {
+            background-color: #DADFE1;
+            color: black;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Hoa</h1>
+    <table>
+        <tr>
+            <td>N</td>
+            <td>Producto</td>
+            <td>Categoria</td>
+            <td>Talla</td>
+            <td>Precio</td>
+        </tr>
+        <? ?>
+        <tr>
+            <td>1</td>
+            <td>xxx</td>
+            <td>Playera</td>
+            <td>M</td>
+            <td>499</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>xxx</td>
+            <td>Playera</td>
+            <td>M</td>
+            <td>499</td>
+        </tr>
+    </table>
 </body>
 
 </html>

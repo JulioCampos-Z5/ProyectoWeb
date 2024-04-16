@@ -32,6 +32,14 @@ nav ul li a:hover {
     border-radius: 50px;
 }
 
+iframe {
+    border-radius: 50px;
+    margin: 10px 0px 0px 5px;
+    background-color: #DADFE1;
+    height: 500px;
+    width: 99%;
+}
+
 li {
     margin: 5px;
 }
