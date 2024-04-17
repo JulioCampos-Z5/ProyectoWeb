@@ -10,6 +10,7 @@
     <title>no entrar</title>
     <style>
         body {
+            font-family: Arial, Helvetica, sans-serif;
             margin: 0;
             border: 0;
             padding: 0;
@@ -17,11 +18,11 @@
 
         table {
             width: 100%;
-            height: 100px;
             background-color: black;
         }
 
         tr {
+            height: 30PX;
             background-color: #DADFE1;
             color: black;
         }
