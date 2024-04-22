@@ -1,63 +1,64 @@
-body {
+* {
     font-family: Arial, Helvetica, sans-serif;
-}
-
-.Usuario img {
-    margin: 10px;
-}
-
-nav {
-    background-color: #C0C9CD;
-    overflow: hidden;
-    border-radius: 10px;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
+    background-color: #2e3438;
     padding: 0;
-
+    margin: 0;
+    box-sizing: border-box;
 }
 
-nav ul li {
-    float: left;
-
-}
-
-nav ul li a {
-    display: block;
-    color: rgb(0, 0, 0);
+header {
     text-align: center;
-    padding: 18px 70px;
+}
+
+.Menu {
+    border-radius: 5px;
+    list-style: none;
+    padding: 20px;
+}
+
+/*Espacios de los objetos*/
+.Menu li {
+    position: relative;
+    display: inline-block;
+}
+
+/* Muestra el contenido del menu plegable */
+.Menu li:hover ul {
+    display: block;
+}
+
+.Menu ul {
+    /*Oculata las opciones del menu desplegable*/
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+.Menu ul li a {
+    display: block;
+    padding: 15px 30px;
     text-decoration: none;
-
+    color: rgb(0, 0, 0);
 }
 
-nav ul li a:hover {
-    background-color: #ffffff;
-    color: black;
-    border-radius: 10px;
+.Menu ul li a:hover {
+    /*Da color al pocisionamiento del boton*/
+    background-color: rgb(174, 183, 197);
+    /*Da coloro a las letras*/
+    color: rgb(0, 0, 0);
+    padding: 15px 30px;
+    
 }
 
-li {
-    margin: 5px;
-}
-
-a {
-    background-color: #DADFE1;
-    border-radius: 10px;
-    font-size: 22px;
-}
-
-main {
-    background-color: white;
-    width: 100%;
-    min-height: 580px;
-}
-
-main iframe {
-    border-radius: 45px;
-    background-color: white;
-    width: 100%;
-    height: 580px;
+/*Altera la barra del menu*/
+.Menu li a {
+    text-decoration: none;
+    padding: 15px 30px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    display: inline-block; /* Añadido */
+    width: 130px; /* Ancho fijo añadido */
+    text-align: center; /* Añadido para centrar texto */
 }

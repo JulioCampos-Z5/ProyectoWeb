@@ -75,15 +75,19 @@ iframe {
     width: 92%;
 }
 
-.Boton :hover {
-    background-color: aquamarine;
-}
-
 .Boton {
     margin: 10px;
-    background-color: #ffffff;
+    background-color: #C0C9CD; /* Cambiado el color de fondo */
     border-radius: 50px;
     font-size: 15px;
     height: 54px;
     width: 177px;
+    border: none; /* Eliminar el borde */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre los botones */
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color de fondo */
 }
+
+.Boton:hover {
+    background-color: #ffffff; /* Cambiar el color de fondo al pasar el cursor */
+}
+
