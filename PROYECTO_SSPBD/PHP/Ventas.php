@@ -61,7 +61,15 @@ $result = $conexion->query($sql); // Utilizar $conexion en lugar de $conn
         if ($result->num_rows > 0) {
             // Mostrar los datos de cada usuario
             while ($row = $result->fetch_assoc()) {
-                echo "<tr><td>" . $row["ID_VENTAS"] . "</td><td>" . $row["ID_PRODUCTO"] . "</td><td>" . $row["FECHA_DE_VENTA"] . "</td><td>" . $row["CANTIDAD_VENDIDAD"] . "</td><td>" . $row["PRECIO_DE_VENTA"] . "</td><td>" . $row["ID_CLIENTE"] . "</td><td>" . $row["ID_EMPLEADO"] . "</td><td>" . $row["ID_METODOPAGO"] . "</td></tr>";
+                echo "<tr>
+                <td>" . $row["ID_VENTAS"] . "</td>
+                <td>" . $row["ID_PRODUCTO"] . "</td>
+                <td>" . $row["FECHA_DE_VENTA"] . "</td>
+                <td>" . $row["CANTIDAD_VENDIDAD"] . "</td>
+                <td>" . $row["PRECIO_DE_VENTA"] . "</td>
+                <td>" . $row["ID_CLIENTE"] . "</td>
+                <td>" . $row["ID_EMPLEADO"] . "</td>
+                <td>" . $row["ID_METODOPAGO"] . "</td></tr>";
             }
         } else {
             echo "<tr><td colspan='4'>0 resultados</td></tr>";

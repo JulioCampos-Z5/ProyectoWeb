@@ -5,16 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./CSS/PerCli.css">
+    <script>
+        function enviarDatos(boton) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/PROYECTO_SSPBD/PHP/Personal.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // You can update the HTML content based on the response from handler.php (optional)
+                    console.log(xhr.responseText); // Log the response for debugging
+                } else {
+                    console.error("Error:", xhr.statusText);
+                }
+            };
+            xhr.send("boton=" + boton);
+        }
+    </script>
     <title>Personal</title>
 </head>
 
 <body>
     <nav>
         <ul>
-            <li><a href="#">Agregar</a></li>
-            <li><a href="#">Editar</a></li>
-            <li><a href="#">Eliminar</a></li>
-            <li><input type="text" name="" id=""></li>
+            <li><input type="submit" name="Agregar" value="Agregar" onclick="enviarDatos('Agregar')"></li>
+            <li><input type="button" name="Editar" value="Editar"></li>
+            <li><input type="button" name="Eliminar" value="Eliminar"></li>
+            <li><input type="text" name="Buscar" id="Buscar"></li>
         </ul>
     </nav>
     <iframe src="http://localhost/Proyectos_Web/PROYECTO_SSPBD/PHP/Personal.php" frameborder="0"></iframe>

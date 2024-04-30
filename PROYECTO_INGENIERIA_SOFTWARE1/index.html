@@ -1,23 +1,61 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda Ropa</title>
+    <title>Tienda de ropa</title>
+    <link rel="stylesheet" href="./CSS/index.css">
+    <script src="./JS/index.js" defer></script>
 </head>
 
 <body>
-    <header>
-        <h1>Tienda de Ropa</h1>
-        <h2>Inicio</h2>
-    </header>
-    <section>
+    <nav>
+        <div class="sidebar-header">
+            <a class="logo-wrapper">
+                <img src="./IMG/logo.svg" alt="Logo">
+                <h2 class="hidden">Tienda <br>de Ropa</h2>
+            </a>
+            <button class="toggle-btn">
+                <img src="./IMG/expand.svg" alt="expand button">
+            </button>
+        </div>
 
-    </section>
-    <footer>
+        <div class="sidebar-links">
+            <a class="link active" href="./HTML/Registros.html" target="Paginas">
+                <img src="./IMG/nota (1).png" alt="">
+                <span class="hidden">Registros</span>
+            </a>
+            <a class="link" href="./HTML/Consultas.html" target="Paginas">
+                <img src="./IMG/carpeta (1).png" alt="">
+                <span class="hidden">Consultas</span>
+            </a>
+            <a class="link" href="./HTML/General.html" target="Paginas">
+                <img src="./IMG/carpeta (2).png   " alt="">
+                <span class="hidden">Todos Registros</span>
+            </a>
+            </li>
+            <a class="link" href="./HTML/Modificacion.html" target="Paginas">
+                <img src="./IMG/lapiz.png" alt="">
+                <span class="hidden">Modificacion</span>
+            </a>
+        </div>
 
-    </footer>
+        <div class="sidebar-bottom">
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <img src="./IMG/usuario.png" alt="">
+                </div>
+                <div class="user-details hidden">
+                    <p class="username">Jane Doe</p>
+                    <p class="user-email">janedoe@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <iframe name="Paginas" src="" frameborder="0"></iframe>
+    </main>
 </body>
 
 </html>

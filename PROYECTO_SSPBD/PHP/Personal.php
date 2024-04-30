@@ -64,6 +64,17 @@ $result = $conexion->query($sql); // Utilizar $conexion en lugar de $conn
             echo "<tr><td colspan='4'>0 resultados</td></tr>";
         }
         ?>
+        <?php if (isset($_POST['boton'])) {
+            $boton = $_POST['boton'];
+            if ($boton === "Agregar") { ?>
+                <tr>
+                    <td><button name="guardar" id="guardar">Guardar</button></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+        <?php }
+        } ?>
     </table>
     <?php $conexion->close(); ?>
 </body>

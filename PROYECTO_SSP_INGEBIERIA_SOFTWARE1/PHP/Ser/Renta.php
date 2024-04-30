@@ -1,20 +1,4 @@
 <?php
-$host = '127.0.0.1'; // Cambiar según tu configuración
-$usuario = 'root'; // Cambiar según tu configuración
-$contraseña = '5544'; // Cambiar según tu configuración
-$base_de_datos = 'bibloteca'; // Cambiar según tu configuración
-
-// Crear una conexión
-$conexion = new mysqli($host, $usuario, $contraseña, $base_de_datos);
-
-// Verificar la conexión
-if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
-}
-
-echo "Conexión exitosa";
-$sql = "SELECT ID_PRODUCTO, NOMBRE, DESCRIPCCION, PRECIO, TALLA, COLOR, ID_CATEGORIA, ESTADO FROM articulos"; // Corregir el nombre de la tabla
-$result = $conexion->query($sql); // Utilizar $conexion en lugar de $conn
 ?>
 
 <!DOCTYPE html>
@@ -23,14 +7,48 @@ $result = $conexion->query($sql); // Utilizar $conexion en lugar de $conn
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="http://localhost/Proyectos_Web/PROYECTO_SSP_INGEBIERIA_SOFTWARE1/CSs/Paginas.css">
+    <link rel="stylesheet" href="./Paginas.css">
     <title>Renta de libros</title>
 </head>
 
 <body>
     <h1> </h1>
     <nav></nav>
-<main></main>
+    <main>
+        <div>
+            <legend>Renta de libros</legend>
+            <label for="codigo">Codigo:</label>
+            <input type="text" name="codigo">
+            <button>Registrar</button>
+            <label for="buscador">Buscar</label>
+            <input type="text" name="buscador" id="buscador">
+        </div>
+        <br>
+        <div>
+            <table>
+                <tr>
+                    <td>Titulo</td>
+                    <td>Stock</td>
+                    <td>Precio</td>
+                </tr>
+                <tr>
+                    <td>Juan Perez y sus aventuras</td>
+                    <td>5</td>
+                    <td>$300</td>
+                </tr>
+                <tr>
+                    <td>La vida es dificil</td>
+                    <td>8</td>
+                    <td>$500</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Total:$800</td>
+                </tr>
+            </table>
+        </div>
+    </main>
 </body>
 
 </html>
