@@ -30,11 +30,39 @@ $result = $conexion->query($sql); // Utilizar $conexion en lugar de $conn
             margin: 0;
             border: 0;
             padding: 0;
+            background-color: #C0C9CD;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        nav ul li {
+            float: left;
+            margin: 0px 50px 0px 0px;
         }
 
         table {
-            width: 100%;
-            background-color: black;
+            margin: 0px 20px 0px 0px;
+            width: calc(100% - 10px);
+
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td {
+            background-color: #fff;
         }
 
         tr {
@@ -42,10 +70,37 @@ $result = $conexion->query($sql); // Utilizar $conexion en lugar de $conn
             background-color: #DADFE1;
             color: black;
         }
+        input {
+            margin: 5px 0pc 0px 20px;
+            border-radius: 15px 15px;
+            font-size: 30px;
+            height: 54px;
+            width: 300px;
+        }
+
+        .Boton {
+            margin: 5px 5px;
+            background-color: #DADFE1;
+            border-radius: 50px;
+            font-size: 15px;
+            height: 54px;
+            width: calc(170% - 10px);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
     </style>
 </head>
 
 <body>
+<nav>
+        <ul>
+            <li><input class="Boton" type="submit" name="Agregar" value="Agregar"></li>
+            <li><input class="Boton" type="button" name="Editar" value="Editar"></li>
+            <li><input class="Boton" type="button" name="Eliminar" value="Eliminar"></li>
+            <li><input type="text" name="Buscar" id="Buscar"></li>
+        </ul>
+    </nav>
     <table>
         <tr>
             <td>N</td>

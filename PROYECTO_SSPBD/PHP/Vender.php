@@ -103,7 +103,23 @@
             transition: background-color 0.3s ease;
         }
 
+        .Boton1 {
+            margin: 0px 5px;
+            background-color: #DADFE1;
+            border-radius: 50px;
+            font-size: 15px;
+            height: 54px;
+            width: calc(100% - 10px);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
         .Boton:hover {
+            background-color: #ffffff;
+        }
+
+        .Boton1:hover {
             background-color: #ffffff;
         }
 
@@ -126,8 +142,8 @@
 <body>
     <nav>
         <ul>
-            <li><a href="#">Vender</a></li>
-            <li><a href="#">Devolución</a></li>
+            <li><input class="Boton1" type="button" value="Vender"></li>
+            <li><input class="Boton1" type="button" value="Devolución"></li>
         </ul>
     </nav>
     <main>
