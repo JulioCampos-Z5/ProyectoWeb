@@ -1,3 +1,20 @@
+<?php
+$host = '127.0.0.1'; // Cambiar según tu configuración
+$usuario = 'root'; // Cambiar según tu configuración
+$contraseña = '5544'; // Cambiar según tu configuración
+$base_de_datos = 'tienda_de_ropa'; // Cambiar según tu configuración
+
+// Crear una conexión
+$conexion = new mysqli($host, $usuario, $contraseña, $base_de_datos);
+
+// Verificar la conexión
+if ($conexion->connect_error) {
+    die("Error de conexión: " . $conexion->connect_error);
+}
+
+$sql = "SELECT ID_PRODUCTO, NOMBRE, PRECIO, TALLA, COLOR, ID_CATEGORIA FROM articulos";
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -16,8 +33,6 @@
 
         nav {
             margin: 15px;
-            border-top-left-radius: 15px;
-            border-bottom-left-radius: 15px;
         }
 
         nav ul {
@@ -28,27 +43,8 @@
         }
 
         nav ul li {
-            margin: 0;
-            padding: 0;
-        }
-
-        nav ul li a {
-            display: block;
-            color: black;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        nav ul li a:hover {
-            background-color: #ddd;
-            color: black;
-            border-radius: 50px;
-        }
-
-        a {
-            background-color: #DADFE1;
-            border-radius: 50px;
+            width: 10.80%;
+            /* Distribuye el espacio disponible entre los dos elementos del menú */
         }
 
         main {
@@ -63,6 +59,7 @@
             max-width: 300px;
             padding: 20px;
             box-sizing: border-box;
+            height: 400px;
         }
 
         .Venta h1 {
@@ -97,7 +94,7 @@
             border-radius: 50px;
             font-size: 15px;
             height: 54px;
-            width: calc(50% - 10px);
+            width: calc(50% - 13px);
             border: none;
             cursor: pointer;
             transition: background-color 0.3s ease;
@@ -136,6 +133,13 @@
                 max-width: none;
             }
         }
+
+        .Barra {
+            border-radius: 50px;
+            border: 0;
+            width: calc(100% - 10px);
+            font-size: 20px;
+        }
     </style>
 </head>
 
@@ -149,9 +153,9 @@
     <main>
         <div class="Venta">
             <h1>Ingrese código del producto</h1>
-            <input type="text" name="Barra" id="Barra"> <br>
+            <input class="Barra" type="text" name="Barra" id="Barra"> <br>
             <input class="Boton" type="button" value="Agregar">
-            <input class="Boton" type="button" value="Escanear producto"> <br>
+            <input class="Boton" type="button" value="Escanear producto">
             <input class="Boton" type="button" value="Eliminar">
             <input class="Boton" type="button" value="Cobrar">
         </div>
@@ -184,6 +188,7 @@
                 </tr>
             <?php } ?>
         </table>
+        
     </main>
 </body>
 

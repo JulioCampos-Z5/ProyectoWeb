@@ -34,9 +34,8 @@ $result = $conexion->query($sql); // Utilizar $conexion en lugar de $conn
         }
 
         table {
-            margin: 0px 20px 0px 0px;
+            margin: 0px 20px 0px 5px;
             width: calc(100% - 10px);
-
         }
 
         th,
@@ -51,6 +50,7 @@ $result = $conexion->query($sql); // Utilizar $conexion en lugar de $conn
 
         td {
             background-color: #fff;
+            height: 3px;
         }
 
         tr {
@@ -63,12 +63,10 @@ $result = $conexion->query($sql); // Utilizar $conexion en lugar de $conn
             list-style-type: none;
             margin: 0;
             padding: 0;
-
         }
 
         nav ul li {
             float: left;
-
         }
 
         nav ul li a {
@@ -77,7 +75,6 @@ $result = $conexion->query($sql); // Utilizar $conexion en lugar de $conn
             text-align: center;
             padding: 20px 70px;
             text-decoration: none;
-
         }
 
         nav ul li a:hover {
@@ -114,9 +111,40 @@ $result = $conexion->query($sql); // Utilizar $conexion en lugar de $conn
             background-color: #ffffff;
         }
 
-        a {
-            background-color: #DADFE1;
-            border-radius: 50px;
+        input[type="text"] {
+            margin: 0;
+            border: 0;
+            border-radius: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 20px;
+        }
+
+        .G {
+            margin: 0;
+            border: 0;
+            border-radius: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 20px;
+        }
+
+        .G:hover {
+            background-color: #ffffff;
+        }
+
+        input[type="search"] {
+            margin: 5px 0px 0px 5px;
+            border: 0;
+            border-radius: 50;
+            width: 100%;
+            height: 54px;
+            font-size: 20px;
+        }
+
+        /* Ocultar la fila por defecto */
+        #filaAgregar {
+            display: none;
         }
     </style>
 </head>
@@ -124,33 +152,57 @@ $result = $conexion->query($sql); // Utilizar $conexion en lugar de $conn
 <body>
     <nav>
         <ul>
-            <li><input type="text" name="" id=""></li>
-            <li><input class="Boton" type="button" value="Agregar"></li>
+            <li><input type="search" name="" id=""></li>
+            <li><input class="Boton" type="button" value="Agregar" onclick="mostrarFilaAgregar()"></li>
         </ul>
     </nav>
     <table>
         <tr>
-            <td>N</td>
-            <td>Nombre</td>
-            <td>Descripción</td>
-            <td>Precio</td>
-            <td>Talla</td>
-            <td>Color</td>
-            <td>Categoria</td>
-            <td>Estado</td>
+            <th>N</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Talla</th>
+            <th>Color</th>
+            <th>Categoria</th>
+            <th>Estado</th>
         </tr>
         <?php
         if ($result->num_rows > 0) {
             // Mostrar los datos de cada usuario
             while ($row = $result->fetch_assoc()) {
-                echo "<tr><td>" . $row["ID_PRODUCTO"] . "</td><td>" . $row["NOMBRE"] . "</td><td>" . $row["DESCRIPCCION"] . "</td><td>" . $row["PRECIO"] . "</td><td>" . $row["TALLA"] . "</td><td>" . $row["COLOR"] . "</td><td>" . $row["ID_CATEGORIA"] . "</td><td>" . $row["ESTADO"]  . "</td></tr>";
+                echo "<tr><td>" . $row["ID_PRODUCTO"] . "</td>
+                <td>" . $row["NOMBRE"] . "</td>
+                <td>" . $row["DESCRIPCCION"] . "</td>
+                <td>" . $row["PRECIO"] . "</td>
+                <td>" . $row["TALLA"] . "</td>
+                <td>" . $row["COLOR"] . "</td>
+                <td>" . $row["ID_CATEGORIA"] . "</td>
+                <td>" . $row["ESTADO"]  . "</td></tr>";
             }
         } else {
             echo "<tr><td colspan='4'>0 resultados</td></tr>";
         }
         ?>
+        <?php $conexion->close(); ?>
+        <tr id="filaAgregar">
+            <td><input class="G" type="button" value="Guardar"></td>
+            <td><input type="text" name="Nombre"></td>
+            <td><input type="text" name="Decripcion"></td>
+            <td><input type="text" name="Precio"></td>
+            <td><input type="text" name="Talla"></td>
+            <td><input type="text" name="Color"></td>
+            <td><input type="text" name="Talla"></td>
+            <td><input type="text" name="Estado"></td>
+        </tr>
     </table>
-    <?php $conexion->close(); ?>
+    <script>
+        function mostrarFilaAgregar() {
+            var filaAgregar = document.getElementById('filaAgregar');
+            // Alternar la visibilidad de la fila al hacer clic en el botón
+            filaAgregar.style.display = filaAgregar.style.display === 'none' ? 'table-row' : 'none';
+        }
+    </script>
 </body>
 
 </html>
