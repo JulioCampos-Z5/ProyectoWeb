@@ -162,17 +162,52 @@ $result = $conexion->query($sql); // Utilizar $conexion en lugar de $conn
             echo "<tr><td colspan='4'>0 resultados</td></tr>";
         }
         ?>
-        <tr id="filaAgregar">
-            <td><input class="G" type="button" value="Guardar"></td>
-            <td><input class="T" type="text" name="Producto" id=""></td>
-            <td><input class="T" type="date" name="Fecha" id=""></td>
-            <td><input class="T" type="text" name="Cantidad" id=""></td>
-            <td><input class="T" type="text" name="Precio" id=""></td>
-            <td><input class="T" type="text" name="Cliente" id=""></td>
-            <td><input class="T" type="text" name="Empleado" id=""></td>
-            <td><input class="T" type="text" name="MdP" id=""></td>
+        <?php $conexion->close(); ?>
+        <?php
+        // aqui se hara la inset sql
+        $host = '127.0.0.1'; // Cambiar según tu configuración
+        $usuario = 'root'; // Cambiar según tu configuración
+        $contraseña = '5544'; // Cambiar según tu configuración
+        $base_de_datos = 'tienda_de_ropa'; // Cambiar según tu configuración
+
+        // Crear una conexión
+        $conexion = new mysqli($host, $usuario, $contraseña, $base_de_datos);
+
+        // Verificar la conexión
+        if ($conexion->connect_error) {
+            die("Error de conexión: " . $conexion->connect_error);
+        }
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $producto = $_POST['Producto'];
+            $fecha = $_POST['Fecha'];
+            $cantidad = $_POST['Cantidad'];
+            $precio = $_POST['Precio'];
+            $cliente = $_POST['Cliente'];
+            $empleado = $_POST['Empleado'];
+            $metodo_pago = $_POST['MdP'];
+
+            $sql_insert = "INSERT INTO ventas (ID_PRODUCTO, FECHA_DE_VENTA, CANTIDAD_VENDIDAD, PRECIO_DE_VENTA, ID_CLIENTE, ID_EMPLEADO, ID_METODOPAGO) VALUES ('$producto', '$fecha', '$cantidad', '$precio', '$cliente', '$empleado', '$metodo_pago')";
+
+            if ($conexion->query($sql_insert) === TRUE) {
+                echo "Registro insertado correctamente.";
+            } else {
+                echo "Error al insertar el registro: " . $conexion->error;
+            }
+        }
+        ?>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <tr id="filaAgregar">
+                <td><input class="G" type="submit" value="Guardar"></td>
+                <td><input class="T" type="text" name="Producto" required></td>
+                <td><input class="T" type="date" name="Fecha" required></td>
+                <td><input class="T" type="text" name="Cantidad" required></td>
+                <td><input class="T" type="text" name="Precio" required></td>
+                <td><input class="T" type="text" name="Cliente" required></td>
+                <td><input class="T" type="text" name="Empleado" required></td>
+                <td><input class="T" type="text" name="MdP" required></td>
+            </tr>
+        </form>
     </table>
-    <?php $conexion->close(); ?>
     <script>
         function mostrarFilaAgregar() {
             var filaAgregar = document.getElementById('filaAgregar');

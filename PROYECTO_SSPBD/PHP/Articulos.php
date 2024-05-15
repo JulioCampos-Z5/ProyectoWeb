@@ -13,7 +13,7 @@ if ($conexion->connect_error) {
 }
 
 // echo "Conexión exitosa";
-$sql = "SELECT ID_PRODUCTO, NOMBRE, DESCRIPCCION, PRECIO, TALLA, COLOR, ID_CATEGORIA, ESTADO FROM articulos"; // Corregir el nombre de la tabla
+$sql = "SELECT ID_PRODUCTO, NOMBRE, DESCRIPCION, PRECIO, TALLA, COLOR, ID_CATEGORIA, ESTADO FROM articulos"; // Corregir el nombre de la tabla
 $result = $conexion->query($sql); // Utilizar $conexion en lugar de $conn
 ?>
 
@@ -173,7 +173,7 @@ $result = $conexion->query($sql); // Utilizar $conexion en lugar de $conn
             while ($row = $result->fetch_assoc()) {
                 echo "<tr><td>" . $row["ID_PRODUCTO"] . "</td>
                 <td>" . $row["NOMBRE"] . "</td>
-                <td>" . $row["DESCRIPCCION"] . "</td>
+                <td>" . $row["DESCRIPCION"] . "</td>
                 <td>" . $row["PRECIO"] . "</td>
                 <td>" . $row["TALLA"] . "</td>
                 <td>" . $row["COLOR"] . "</td>
@@ -185,15 +185,49 @@ $result = $conexion->query($sql); // Utilizar $conexion en lugar de $conn
         }
         ?>
         <?php $conexion->close(); ?>
+        <?php
+        // aqui se hara la inset sql
+        $host = '127.0.0.1'; // Cambiar según tu configuración
+        $usuario = 'root'; // Cambiar según tu configuración
+        $contraseña = '5544'; // Cambiar según tu configuración
+        $base_de_datos = 'tienda_de_ropa'; // Cambiar según tu configuración
+
+        // Crear una conexión
+        $conexion = new mysqli($host, $usuario, $contraseña, $base_de_datos);
+
+        // Verificar la conexión
+        if ($conexion->connect_error) {
+            die("Error de conexión: " . $conexion->connect_error);
+        }
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $nombre = $_POST['nombre'];
+            $descripcion = $_POST['descripcion'];
+            $precio = $_POST['precio'];
+            $talla = $_POST['talla'];
+            $color = $_POST['color'];
+            $id_categoria = $_POST['id_categoria'];
+            $estado = $_POST['estado'];
+
+            $sql_insert = "INSERT INTO articulos (NOMBRE, DESCRIPCION, PRECIO, TALLA, COLOR, ID_CATEGORIA, ESTADO) VALUES ('$nombre', '$descripcion', '$precio', '$talla', '$color', '$id_categoria', '$estado')";
+
+            if ($conexion->query($sql_insert) === TRUE) {
+                echo "Registro insertado correctamente.";
+            } else {
+                echo "Error al insertar el registro: " . $conexion->error;
+            }
+        }
+        ?>
         <tr id="filaAgregar">
-            <td><input class="G" type="button" value="Guardar"></td>
-            <td><input type="text" name="Nombre"></td>
-            <td><input type="text" name="Decripcion"></td>
-            <td><input type="text" name="Precio"></td>
-            <td><input type="text" name="Talla"></td>
-            <td><input type="text" name="Color"></td>
-            <td><input type="text" name="Talla"></td>
-            <td><input type="text" name="Estado"></td>
+            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                <td><input class="G" type="submit" value="Guardar"></td>
+                <td><input type="text" name="nombre"></td>
+                <td><input type="text" name="descripcion"></td>
+                <td><input type="text" name="precio"></td>
+                <td><input type="text" name="talla"></td>
+                <td><input type="text" name="color"></td>
+                <td><input type="text" name="id_categoria"></td>
+                <td><input type="text" name="estado"></td>
+            </form>
         </tr>
     </table>
     <script>

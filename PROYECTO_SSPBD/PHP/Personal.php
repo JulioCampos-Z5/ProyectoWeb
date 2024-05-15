@@ -154,11 +154,41 @@ $result = $conexion->query($sql); // Utilizar $conexion en lugar de $conn
             echo "<tr><td colspan='4'>0 resultados</td></tr>";
         }
         ?>
+        <?php
+        // aqui se hara la inset sql
+        $host = '127.0.0.1'; // Cambiar según tu configuración
+        $usuario = 'root'; // Cambiar según tu configuración
+        $contraseña = '5544'; // Cambiar según tu configuración
+        $base_de_datos = 'tienda_de_ropa'; // Cambiar según tu configuración
+
+        // Crear una conexión
+        $conexion = new mysqli($host, $usuario, $contraseña, $base_de_datos);
+
+        // Verificar la conexión
+        if ($conexion->connect_error) {
+            die("Error de conexión: " . $conexion->connect_error);
+        }
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $nombre = $_POST['Nombre'];
+            $cargo = $_POST['Cargo'];
+            $telefono = $_POST['Telefono'];
+
+            $sql_insert = "INSERT INTO empleados (NOMBRE, CARGO, TELEFONO) VALUES ('$nombre', '$cargo', '$telefono')";
+
+            if ($conexion->query($sql_insert) === TRUE) {
+                echo "Registro insertado correctamente.";
+            } else {
+                echo "Error al insertar el registro: " . $conexion->error;
+            }
+        }
+        ?>
         <tr id="filaAgregar">
-            <td><input class="G" type="button" value="Guardar"></td>
-            <td><input class="T" type="text" name="Nombre" id=""></td>
-            <td><input class="T" type="text" name="Cargo" id=""></td>
-            <td><input class="T" type="text" name="Telefono" id=""></td>
+            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                <td><input class="G" type="submit" value="Guardar"></td>
+                <td><input class="T" type="text" name="Nombre" id=""></td>
+                <td><input class="T" type="text" name="Cargo" id=""></td>
+                <td><input class="T" type="text" name="Telefono" id=""></td>
+            </form>
         </tr>
     </table>
     <?php $conexion->close(); ?>

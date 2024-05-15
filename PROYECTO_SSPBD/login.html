@@ -18,12 +18,14 @@
         <div class="Contenido">
             <label class="CT">inicie sesion</label><br>
             <div class="Contenido2">
-                <form action="" method="post">
-                    <label class="txt" for="usuario">ingrece su usuario</label> <br>
-                    <input type="text" name="" id="usuario"> <br>
-                    <label class="txt" for="Calve">ingrece su contraseña</label> <br>
-                    <input type="password" name="" id="Calve"> <br>
-                    <input class="Boton" type="submit" value="Iniciar sesion">
+                <form action="Sescion.php" method="post">
+                    <label class="txt" for="usuario">ingrese su usuario</label> <br>
+                    <input type="text" name="usuario" id="usuario"> <br>
+                    <!-- Agregado el name para enviar el usuario -->
+                    <label class="txt" for="clave">ingrese su contraseña</label> <br>
+                    <input type="password" name="clave" id="clave"> <br>
+                    <!-- Agregado el name para enviar la contraseña -->
+                    <input class="Boton" type="submit" value="Iniciar sesión">
                 </form>
             </div>
         </div>
