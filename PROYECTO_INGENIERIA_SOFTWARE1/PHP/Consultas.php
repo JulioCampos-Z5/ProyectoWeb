@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1>Registros</h1>
+    <h1>Consultas</h1>
     <nav>
         <ul>
             <li><input type="button" value="Empleado" name="Empleado"></li>

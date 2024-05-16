@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1>Registros</h1>
+    <h1>Modificaciones</h1>
     <nav>
         <ul>
             <li><input type="button" value="Empleado" name="Empleado"></li>
@@ -51,13 +51,13 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Obtener todos los botones del menú
             const buttons = document.querySelectorAll('input[type="button"]');
-            
+
             // Función para manejar el clic en los botones del menú
             function handleButtonClick(event) {
                 const action = event.target.name;
                 window.location.href = window.location.pathname + '?action=' + action;
             }
-            
+
             // Agregar un event listener a cada botón del menú
             buttons.forEach(button => {
                 button.addEventListener('click', handleButtonClick);

@@ -1,3 +1,65 @@
+<?php function Empleado()
+{ ?>
+    <form action="">
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre">
+        <label for="nss">NSS</label>
+        <input type="text" name="nss" id="nss">
+        <label for="horario">Horario</label>
+        <input type="text" name="horario" id="horario">
+        <label for="cargo">Cargo</label>
+        <input type="text" name="cargo" id="cargo">
+        <label for="sueldo">Sueldo</label>
+        <input type="text" name="sueldo" id="sueldo">
+        <input type="submit" value="Guardar">
+    </form>
+<?php } ?>
+
+<?php function Proveedor()
+{ ?>
+    <form action="">
+        <label for=""></label>
+        <input type="text" name="" id="">
+        <input type="submit" value="Guardar">
+    </form>
+<?php } ?>
+
+<?php function Compra()
+{ ?>
+    <form action="">
+        <label for=""></label>
+        <input type="text" name="" id="">
+        <input type="submit" value="Guardar">
+    </form>
+<?php } ?>
+
+<?php function Cliente()
+{ ?>
+    <form action="">
+        <label for=""></label>
+        <input type="text" name="" id="">
+        <input type="submit" value="Guardar">
+    </form>
+<?php } ?>
+
+<?php function Venta()
+{ ?>
+    <form action="">
+        <label for=""></label>
+        <input type="text" name="" id="">
+        <input type="submit" value="Guardar">
+    </form>
+<?php } ?>
+
+<?php function Devolucion()
+{ ?>
+    <form action="">
+        <label for=""></label>
+        <input type="text" name="" id="">
+        <input type="submit" value="Guardar">
+    </form>
+<?php } ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,21 +87,27 @@
     switch ($variable) {
         case 'Empleado':
             echo "<h2>Contenido para Empleado</h2>";
+            Empleado();
             break;
         case 'Proveedor':
             echo "<h2>Contenido para Proveedor</h2>";
+            Proveedor();
             break;
         case 'Compra':
             echo "<h2>Contenido para Compra</h2>";
+            Compra();
             break;
         case 'Cliente':
             echo "<h2>Contenido para Cliente</h2>";
+            Cliente();
             break;
         case 'Venta':
             echo "<h2>Contenido para Venta</h2>";
+            Venta();
             break;
         case 'Devolucion':
             echo "<h2>Contenido para Devolución</h2>";
+            Devolucion();
             break;
         default:
             echo "<h2>Selecciona una opción del menú</h2>";
@@ -51,13 +119,13 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Obtener todos los botones del menú
             const buttons = document.querySelectorAll('input[type="button"]');
-            
+
             // Función para manejar el clic en los botones del menú
             function handleButtonClick(event) {
                 const action = event.target.name;
                 window.location.href = window.location.pathname + '?action=' + action;
             }
-            
+
             // Agregar un event listener a cada botón del menú
             buttons.forEach(button => {
                 button.addEventListener('click', handleButtonClick);
