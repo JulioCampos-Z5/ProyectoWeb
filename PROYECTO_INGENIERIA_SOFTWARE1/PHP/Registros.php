@@ -67,6 +67,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registros</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+        body {
+            font-family: Poppins, sans-serif;
+        }
+
+        nav {
+            overflow: hidden;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            float: left;
+        }
+
+        nav ul li {
+            display: block;
+            color: black;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        label {
+            font: inherit;
+        }
+
+        input[type="button"] {
+            margin: 0px 5px;
+            border: 0;
+            padding: 0;
+            border-radius: 10px;
+            width: 100px;
+            height: 50px;
+        }
+
+        input[type="button"]:hover {
+            background-color: #fff;
+        }
+
+        input[type="submit"] {
+            margin: 0px 5px;
+            border: 0;
+            padding: 0;
+            border-radius: 10px;
+            width: 100px;
+            height: 50px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #fff;
+        }
+
+        input[type="text"] {
+            margin: 0;
+            border: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 
 <body>

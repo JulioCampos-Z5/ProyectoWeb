@@ -192,6 +192,7 @@ body.active main {
 }
 
 iframe {
+    margin: 40px 0px 0px 0px;
     width: 100%;
     /* Ancho del iframe al 100% */
     height: calc(100vh - 1.75rem);
