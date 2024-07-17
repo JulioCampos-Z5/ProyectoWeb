@@ -1,33 +1,144 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registros</title>
     <style>
-        body{
-            background-color: #e4e3e8;
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+        body {
             font-family: Poppins, sans-serif;
         }
+
+        nav {
+            overflow: hidden;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            float: left;
+        }
+
+        nav ul li {
+            display: block;
+            color: black;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        label {
+            font: inherit;
+        }
+
+        input[type="button"] {
+            margin: 0px 5px;
+            border: 0;
+            padding: 0;
+            border-radius: 10px;
+            width: 100px;
+            height: 50px;
+        }
+
+        input[type="submit"] {
+            margin: 0px 5px;
+            border: 0;
+            padding: 0;
+            border-radius: 5px;
+            width: 100px;
+            height: 20px;
+        }
+
+        input[type="button"]:hover,
+        input[type="submit"]:hover {
+            background-color: #fff;
+        }
+
+        input[type="text"] {
+            margin: 0;
+            border: 0;
+            padding: 0;
+            height: 20px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
     </style>
-    <title>Document</title>
 </head>
 
 <body>
-    <br><br>
+    <h1>Registros</h1>
     <nav>
         <ul>
-            <li><a href="http://localhost/Proyectos_Web/PROYECTO_INGENIERIA_SOFTWARE1/PHP/Venta.php"
-                    target="P2">Ventas</a></li>
-            <li><a href="http://localhost/Proyectos_Web/PROYECTO_INGENIERIA_SOFTWARE1/PHP/Compra.php"
-                    target="P2">Compra</a></li>
-            <li><a href="http://localhost/Proyectos_Web/PROYECTO_INGENIERIA_SOFTWARE1/PHP/Devolucion.php"
-                    target="P2">Devolucion</a></li>
+            <li><input type="button" value="Venta" name="Venta" onclick="navigate('Venta')"></li>
+            <li><input type="button" value="Devolucion" name="Devolucion" onclick="navigate('Devolucion')"></li>
+            <li><input type="button" value="Compra" name="Compra" onclick="navigate('Compra')"></li>
+            <li><input type="button" value="Empleado" name="Empleado" onclick="navigate('Empleado')"></li>
+            <li><input type="button" value="Cliente" name="Cliente" onclick="navigate('Cliente')"></li>
         </ul>
     </nav>
-    <main>
-        <iframe name="P2" src="" frameborder="0"></iframe>
-    </main>
+    <div id="main-content">
+        <h2>Selecciona una opción del menú</h2>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            window.navigate = function(action) {
+                const mainContent = document.getElementById('main-content');
+                fetch('http://localhost/Proyectos_Web/PROYECTO_INGENIERIA_SOFTWARE1/php/Registros.php')
+                    .then(response => response.text())
+                    .then(data => {
+                        switch (action) {
+                            case 'Venta':
+                                mainContent.innerHTML = `<h2>Contenido para Venta</h2>` + data.match(/<form method="POST" action="">[\s\S]*?<\/form>/g)[0];
+                                break;
+                            case 'Devolucion':
+                                mainContent.innerHTML = `<h2>Contenido para Devolución</h2>` + data.match(/<form method="POST" action="">[\s\S]*?<\/form>/g)[1];
+                                break;
+                            case 'Compra':
+                                mainContent.innerHTML = `<h2>Contenido para Compra</h2>` + data.match(/<nav>[\s\S]*?<\/nav>/g)[1];
+                                break;
+                            case 'Empleado':
+                                mainContent.innerHTML = `<h2>Contenido para Empleado</h2>` + data.match(/<form method="POST" action="">[\s\S]*?<\/form>/g)[2];
+                                break;
+                            case 'Cliente':
+                                mainContent.innerHTML = `<h2>Contenido para Cliente</h2>` + data.match(/<form method="POST" action="">[\s\S]*?<\/form>/g)[3];
+                                break;
+                            default:
+                                mainContent.innerHTML = `<h2>Selecciona una opción del menú</h2>`;
+                                break;
+                        }
+                    });
+            };
+
+            window.showSubSection = function(subaction) {
+                const subsectionContent = document.getElementById('subsection-content');
+                fetch('http://localhost/Proyectos_Web/PROYECTO_INGENIERIA_SOFTWARE1/php/Registros.php')
+                    .then(response => response.text())
+                    .then(data => {
+                        switch (subaction) {
+                            case 'Compras':
+                                subsectionContent.innerHTML = data.match(/<form method="POST" action="">[\s\S]*?<\/form>/g)[4];
+                                break;
+                            case 'Proveedor':
+                                subsectionContent.innerHTML = data.match(/<form method="POST" action="">[\s\S]*?<\/form>/g)[5];
+                                break;
+                            case 'Prendas':
+                                subsectionContent.innerHTML = data.match(/<form method="POST" action="">[\s\S]*?<\/form>/g)[6];
+                                break;
+                            default:
+                                subsectionContent.innerHTML = `<h2>Selecciona una subacción del menú</h2>`;
+                                break;
+                        }
+                    });
+            };
+        });
+    </script>
 </body>
 
 </html>

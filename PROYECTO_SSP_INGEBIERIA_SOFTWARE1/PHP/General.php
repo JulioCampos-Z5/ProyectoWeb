@@ -1,16 +1,53 @@
-<?php include("BD.php");
-function Empleado()
-{ ?>
-    <label for="">Buscar<input type="text" name="" id=""><input type="submit" value=""></label>
-<?php } ?>
+<?php
+include("BD.php");
 
+function Empleado()
+{
+    global $conexion;
+
+    if (!$conexion) {
+        echo "Conexión no válida";
+        return;
+    }
+
+    $sql = "SELECT NOMBRE, NSS, HORARIO, CARGO, SUELDO FROM personal";
+    $resultado = $conexion->query($sql);
+
+    if ($resultado->num_rows > 0) {
+        echo "<table>
+            <tr>
+                <td>Nombre</td>
+                <td>NSS</td>
+                <td>Horario</td>
+                <td>Cargo</td>
+                <td>Sueldo</td>
+            </tr>";
+
+        while ($Datos = $resultado->fetch_assoc()) {
+            echo "<tr>
+                <td>" . htmlspecialchars($Datos["NOMBRE"]) . "</td>
+                <td>" . htmlspecialchars($Datos["NSS"]) . "</td>
+                <td>" . htmlspecialchars($Datos["HORARIO"]) . "</td>
+                <td>" . htmlspecialchars($Datos["CARGO"]) . "</td>
+                <td>" . htmlspecialchars($Datos["SUELDO"]) . "</td>
+            </tr>";
+        }
+
+        echo "</table>";
+    } else {
+        echo "0 Datos";
+    }
+
+    $conexion->close();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultas</title>
+    <title>Registros</title>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
@@ -78,15 +115,15 @@ function Empleado()
 </head>
 
 <body>
-    <h1>Consultas</h1>
+    <h1>Todos los Registros</h1>
     <nav>
         <ul>
             <li><input type="button" value="Empleado" name="Empleado"></li>
-            <li><input type="button" value="Editorial" name="Editorial"></li>
+            <li><input type="button" value="Proveedor" name="Proveedor"></li>
             <li><input type="button" value="Compra" name="Compra"></li>
             <li><input type="button" value="Cliente" name="Cliente"></li>
             <li><input type="button" value="Venta" name="Venta"></li>
-            <li><input type="button" value="Renta" name="Renta"></li>
+            <li><input type="button" value="Devolucion" name="Devolucion"></li>
         </ul>
     </nav>
     <?php
@@ -97,8 +134,8 @@ function Empleado()
             echo "<h2>Contenido para Empleado</h2>";
             Empleado();
             break;
-        case 'Editorial':
-            echo "<h2>Contenido para Editorial</h2>";
+        case 'Proveedor':
+            echo "<h2>Contenido para Proveedor</h2>";
             break;
         case 'Compra':
             echo "<h2>Contenido para Compra</h2>";
@@ -109,7 +146,7 @@ function Empleado()
         case 'Venta':
             echo "<h2>Contenido para Venta</h2>";
             break;
-        case 'Renta':
+        case 'Devolucion':
             echo "<h2>Contenido para Devolución</h2>";
             break;
         default:

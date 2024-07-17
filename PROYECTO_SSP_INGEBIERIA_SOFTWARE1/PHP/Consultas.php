@@ -1,9 +1,3 @@
-<?php include("BD.php");
-function Empleado()
-{ ?>
-    <label for="">Buscar<input type="text" name="" id=""><input type="submit" value=""></label>
-<?php } ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,11 +76,11 @@ function Empleado()
     <nav>
         <ul>
             <li><input type="button" value="Empleado" name="Empleado"></li>
-            <li><input type="button" value="Editorial" name="Editorial"></li>
+            <li><input type="button" value="Proveedor" name="Proveedor"></li>
             <li><input type="button" value="Compra" name="Compra"></li>
             <li><input type="button" value="Cliente" name="Cliente"></li>
             <li><input type="button" value="Venta" name="Venta"></li>
-            <li><input type="button" value="Renta" name="Renta"></li>
+            <li><input type="button" value="Devolucion" name="Devolucion"></li>
         </ul>
     </nav>
     <?php
@@ -95,10 +89,9 @@ function Empleado()
     switch ($variable) {
         case 'Empleado':
             echo "<h2>Contenido para Empleado</h2>";
-            Empleado();
             break;
-        case 'Editorial':
-            echo "<h2>Contenido para Editorial</h2>";
+        case 'Proveedor':
+            echo "<h2>Contenido para Proveedor</h2>";
             break;
         case 'Compra':
             echo "<h2>Contenido para Compra</h2>";
@@ -109,7 +102,7 @@ function Empleado()
         case 'Venta':
             echo "<h2>Contenido para Venta</h2>";
             break;
-        case 'Renta':
+        case 'Devolucion':
             echo "<h2>Contenido para Devolución</h2>";
             break;
         default:
